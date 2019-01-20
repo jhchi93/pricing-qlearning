@@ -11,9 +11,6 @@ public class FixedCostsSimulation {
 	public static void main(String[] args){
 		int numberOfDemandStates = 10;
 		ArrayList<Integer> periods = new ArrayList<>();
-//		for (int i = 1; i < 51; i++){
-//			periods.add(i*12);
-//		}
 		periods.add(12); periods.add(24); periods.add(120); periods.add(600); periods.add(6000); periods.add(12000); periods.add(60000);
 		periods.add(120000); periods.add(600000); periods.add(1200000);
 		int price = 3;
