@@ -48,10 +48,6 @@ public class MarkovDecisionProcess {
 				}
 			}
 			RandomGenerator rng = new MersenneTwister(seed);
-//			System.out.println(QList.size());
-//			for(QValue Q: QList){
-//				System.out.println("Demand: " + Q.getState().getDemand() + " Price: " + Q.getState().getPrice()+" Action: "+Q.getAction());
-//			}
 			
 			int initialDemand = rng.nextInt(10);
 			int initialPrice = rng.nextInt(10);
@@ -76,20 +72,8 @@ public class MarkovDecisionProcess {
 				opt.addPricingAction(bestAction);
 			}
 			countToExcel();
-//			writeToExcel(seed);
-//			for (QValue Q:QList){
-//				System.out.print("Demand state: " + Q.getState().getDemand());
-//				System.out.print("  Price state: " + Q.getState().getPrice());
-//				System.out.print("  Action: " + Q.getAction());
-//				System.out.println("  Q-Value: " + Q.getQ());
-//			}
 		}
 		actionsToExcel(optimalActions);
-//		for (OptimalAction opt:optimalActions){
-//			System.out.println("Best action for state (" + opt.getState().getDemand() + ", " + opt.getState().getPrice() + "): " 
-//		+ opt.getOptimalAction() + " with lower optimal " + opt.getCountLowerBest() + " time(s), constant best " + 
-//					opt.getCountConstantBest() + " time(s), raise best " + opt.getCountRaiseBest() + " time(s).");
-//		}
 		
 	}
 	
@@ -175,56 +159,6 @@ public class MarkovDecisionProcess {
 		}
 		return QList;
 	}
-	
-//	private static void writeToExcel(int name){
-//		try{
-//			String xlsxFileAddress = new java.io.File( "." ).getCanonicalPath() + "/MarkovResults" + name + ".xlsx"; //output file
-//			XSSFWorkbook workbook = new XSSFWorkbook();
-//			XSSFSheet sheet = workbook.createSheet("Stats");
-//			XSSFRow headerRow = sheet.createRow(0);
-//			headerRow.createCell(0).setCellValue("Demand/Price state");
-//			headerRow.createCell(1).setCellValue("Lower Price");
-//			headerRow.createCell(2).setCellValue("Keep Price");
-//			headerRow.createCell(3).setCellValue("Raise Price");
-//			
-//			int rowNum = 0;
-//			int demand = -1;
-//			int price = -1;
-//			XSSFRow nextRow = sheet.getRow(rowNum);
-//			for (QValue Q:QList){
-//				if(Q.getState().getDemand() != demand || Q.getState().getPrice() != price){
-//					demand = Q.getState().getDemand();
-//					price = Q.getState().getPrice();
-//					rowNum++;
-//					nextRow = sheet.createRow(rowNum);
-//					nextRow.createCell(0).setCellValue("(" + Q.getState().getDemand() + ", " + Q.getState().getPrice() + ")");
-//				}
-//				if(Q.getAction() == -1 && Q.getQ() != 0){
-//					nextRow.createCell(1).setCellValue(Math.round(Q.getQ()*100)/100.0);
-//				}
-//				else if (Q.getAction() == 0 && Q.getQ() != 0){
-//					nextRow.createCell(2).setCellValue(Math.round(Q.getQ()*100)/100.0);
-//				}
-//				else if(Q.getAction() == 1 && Q.getQ() != 0){
-//					nextRow.createCell(3).setCellValue(Math.round(Q.getQ()*100)/100.0);
-//				}
-//			}
-//			for (int column = 0; column < sheet.getRow(0).getLastCellNum(); column++){ //expand columns
-//				sheet.autoSizeColumn(column);
-//				}
-//			FileOutputStream fileOutputStream =  new FileOutputStream(xlsxFileAddress);
-//			try {
-//				workbook.write(fileOutputStream);
-//				}
-//			finally {
-//				fileOutputStream.close();
-//				workbook.close();
-//				}
-//			
-//		} catch(Exception e){
-//			e.printStackTrace();
-//		}
-//	}
 	
 	private static void actionsToExcel(ArrayList<OptimalAction> optimalActions){
 		try{
